@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "8GXepAKRISQ=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Redes-20\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\JuegoDecisionQuest.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\monogame.content.builder.task.3.8.6.nupkg.sha512",
+    "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.framework.native\\3.8.5.1\\monogame.framework.native.3.8.5.1.nupkg.sha512",
+    "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.runtime.linux.vulkan\\3.8.5.1\\monogame.runtime.linux.vulkan.3.8.5.1.nupkg.sha512",
+    "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.runtime.mac.vulkan\\3.8.5.1\\monogame.runtime.mac.vulkan.3.8.5.1.nupkg.sha512",
+    "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.runtime.windows.vulkan\\3.8.5.1\\monogame.runtime.windows.vulkan.3.8.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}
