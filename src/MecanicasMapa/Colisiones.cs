@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JuegoDecisionQuest.MecanicasJuego
+namespace JuegoDecisionQuest.MecanicasMapa
 {
-    internal class MovimientoPersonaje
+    internal class Colisiones
     {
     }
 }
