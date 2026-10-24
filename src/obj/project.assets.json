@@ -1,0 +1,230 @@
+{
+  "version": 4,
+  "targets": {
+    "net9.0": {
+      "MonoGame.Content.Builder.Task/3.8.6": {
+        "type": "package",
+        "build": {
+          "build/MonoGame.Content.Builder.Task.props": {},
+          "build/MonoGame.Content.Builder.Task.targets": {}
+        }
+      },
+      "MonoGame.Framework.Native/3.8.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/MonoGame.Framework.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/MonoGame.Framework.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "MonoGame.Runtime.Linux.Vulkan/3.8.5": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/linux-arm64/native/libmgruntime.so": {
+            "assetType": "native",
+            "rid": "linux-arm64"
+          },
+          "runtimes/linux-x64/native/libmgruntime.so": {
+            "assetType": "native",
+            "rid": "linux-x64"
+          }
+        }
+      },
+      "MonoGame.Runtime.Mac.Vulkan/3.8.5": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/osx/native/libmgruntime.dylib": {
+            "assetType": "native",
+            "rid": "osx"
+          }
+        }
+      },
+      "MonoGame.Runtime.Windows.Vulkan/3.8.5": {
+        "type": "package",
+        "runtimeTargets": {
+          "runtimes/win-arm64/native/mgruntime.dll": {
+            "assetType": "native",
+            "rid": "win-arm64"
+          },
+          "runtimes/win-x64/native/mgruntime.dll": {
+            "assetType": "native",
+            "rid": "win-x64"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MonoGame.Content.Builder.Task/3.8.6": {
+      "sha512": "YzlwPtEGn5wlxToias3I/dW7ZyRJZLr2uMYKgrkwm/gpYyxWg4eI9f5+ih2CdLoCm5Daqvpf8w5PvwwzGsR1Og==",
+      "type": "package",
+      "path": "monogame.content.builder.task/3.8.6",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "build/MonoGame.Content.Builder.Task.props",
+        "build/MonoGame.Content.Builder.Task.targets",
+        "monogame.content.builder.task.3.8.6.nupkg.sha512",
+        "monogame.content.builder.task.nuspec"
+      ]
+    },
+    "MonoGame.Framework.Native/3.8.5": {
+      "sha512": "fobFZ8nfhCmt98HD0FNX+nP1IOoJ2N/Zk/JHY6148i4CEpIThv+OJeiR8W+zba+Xz5NkPC2pmWHRum0jN37boQ==",
+      "type": "package",
+      "path": "monogame.framework.native/3.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "lib/netstandard2.1/MonoGame.Framework.dll",
+        "lib/netstandard2.1/MonoGame.Framework.xml",
+        "monogame.framework.native.3.8.5.nupkg.sha512",
+        "monogame.framework.native.nuspec"
+      ]
+    },
+    "MonoGame.Runtime.Linux.Vulkan/3.8.5": {
+      "sha512": "hfoeAoeBpdKAh9IjqZMllh/JHvIs7RtVpONMqh+3S32qyraE6xgDXsSFecGxgptOhTnDyy496XHSSRShfG8HJQ==",
+      "type": "package",
+      "path": "monogame.runtime.linux.vulkan/3.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "monogame.runtime.linux.vulkan.3.8.5.nupkg.sha512",
+        "monogame.runtime.linux.vulkan.nuspec",
+        "runtimes/linux-arm64/native/libmgruntime.so",
+        "runtimes/linux-x64/native/libmgruntime.so"
+      ]
+    },
+    "MonoGame.Runtime.Mac.Vulkan/3.8.5": {
+      "sha512": "5AEZewEsZMmjbyDnMK313eJfG1RTtcfg+oS1g0Gtthicc8PHLE2yD8kA591eWeNcLdHDJfQV9qHmiAVBwJA4EA==",
+      "type": "package",
+      "path": "monogame.runtime.mac.vulkan/3.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "monogame.runtime.mac.vulkan.3.8.5.nupkg.sha512",
+        "monogame.runtime.mac.vulkan.nuspec",
+        "runtimes/osx/native/libmgruntime.dylib"
+      ]
+    },
+    "MonoGame.Runtime.Windows.Vulkan/3.8.5": {
+      "sha512": "YZnBW6w0bVTZfMPJ1WljajLWS6OVS6T8ohw0VWpcyNr90bR+sHkVFIoRGkglVP8HlaDb+5B07U1E/sywo4GcWg==",
+      "type": "package",
+      "path": "monogame.runtime.windows.vulkan/3.8.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "monogame.runtime.windows.vulkan.3.8.5.nupkg.sha512",
+        "monogame.runtime.windows.vulkan.nuspec",
+        "runtimes/win-arm64/native/mgruntime.dll",
+        "runtimes/win-x64/native/mgruntime.dll"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net9.0": [
+      "MonoGame.Content.Builder.Task >= 3.8.*",
+      "MonoGame.Framework.Native >= 3.8.5",
+      "MonoGame.Runtime.Linux.Vulkan >= 3.8.5",
+      "MonoGame.Runtime.Mac.Vulkan >= 3.8.5",
+      "MonoGame.Runtime.Windows.Vulkan >= 3.8.5"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\ernes\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\ernes\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\JuegoDecisionQuest.csproj",
+      "projectName": "JuegoDecisionQuest",
+      "projectPath": "C:\\Users\\ernes\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\JuegoDecisionQuest.csproj",
+      "packagesPath": "C:\\Users\\ernes\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\ernes\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\ernes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net9.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net9.0": {
+          "framework": "net9.0",
+          "targetAlias": "net9.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "10.0.300"
+    },
+    "frameworks": {
+      "net9.0": {
+        "framework": "net9.0",
+        "targetAlias": "net9.0",
+        "dependencies": {
+          "MonoGame.Content.Builder.Task": {
+            "target": "Package",
+            "version": "[3.8.*, )"
+          },
+          "MonoGame.Framework.Native": {
+            "target": "Package",
+            "version": "[3.8.5, )"
+          },
+          "MonoGame.Runtime.Linux.Vulkan": {
+            "target": "Package",
+            "version": "[3.8.5, )"
+          },
+          "MonoGame.Runtime.Mac.Vulkan": {
+            "target": "Package",
+            "version": "[3.8.5, )"
+          },
+          "MonoGame.Runtime.Windows.Vulkan": {
+            "target": "Package",
+            "version": "[3.8.5, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
