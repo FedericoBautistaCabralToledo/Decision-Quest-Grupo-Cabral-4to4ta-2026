@@ -10,6 +10,9 @@ namespace mundoparte3
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Mapa _mapa;
+        public Personaje jugador;
+        Texture2D TexturaPersonaje;
+        Sprite spritejugador;
 
         public Game1()
         {
@@ -30,6 +33,9 @@ namespace mundoparte3
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            TexturaPersonaje = Content.Load<Texture2D>("caballero_hollow");
+            spritejugador = new Sprite(TexturaPersonaje, new Vector2(0, 0), 64, 64);
+            jugador = new Personaje(15, 100, 10, spritejugador);
 
             _mapa = new Mapa(Content);
         }
@@ -40,6 +46,7 @@ namespace mundoparte3
             {
                 Exit();
             }
+            jugador.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -49,6 +56,8 @@ namespace mundoparte3
             GraphicsDevice.Clear(Color.Black);
 
             _spriteBatch.Begin();
+
+            jugador.Draw(_spriteBatch);
 
             _mapa.Dibujar(_spriteBatch);
 
