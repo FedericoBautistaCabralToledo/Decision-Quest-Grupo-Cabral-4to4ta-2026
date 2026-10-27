@@ -1,0 +1,277 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\objetos\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\objetos\\npc.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Redes-20\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\build\\MonoGame.Content.Builder.Task.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\game1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\mecanicasgenerales\\guardado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\mecanicasgenerales\\guardado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\objetos\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\objetos\\sprite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\objetos\\personaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\objetos\\personaje.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\objetos\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\objetos\\mapa.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\objetos\\casilladialogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\objetos\\casilladialogo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\icon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\icon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\mecanicasmapa\\colisiones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\mecanicasmapa\\colisiones.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\mecanicaspelea\\enemigo\\ataqueenemigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\mecanicaspelea\\enemigo\\ataqueenemigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\mecanicaspelea\\enemigo\\estadisticasenemigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\mecanicaspelea\\enemigo\\estadisticasenemigo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\mecanicaspelea\\jugador\\ataquejugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\mecanicaspelea\\jugador\\ataquejugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|c:\\users\\redes-20\\decision-quest-grupo-cabral-4to4ta-2026\\src\\mecanicaspelea\\jugador\\estadisticasjugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}|JuegoDecisionQuest.csproj|solutionrelative:src\\mecanicaspelea\\jugador\\estadisticasjugador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "CasillaDialogo.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\CasillaDialogo.cs",
+              "RelativeDocumentMoniker": "src\\Objetos\\CasillaDialogo.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\CasillaDialogo.cs",
+              "RelativeToolTip": "src\\Objetos\\CasillaDialogo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:44:54.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "NPC.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\NPC.cs",
+              "RelativeDocumentMoniker": "src\\Objetos\\NPC.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\NPC.cs",
+              "RelativeToolTip": "src\\Objetos\\NPC.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:44:40.717Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Icon.ico -  [Espa\u00F1ol (M\u00E9xico)] - Icon [256x256, 32 bits, PNG]",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Icon.ico",
+              "RelativeDocumentMoniker": "src\\Icon.ico",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Icon.ico -  [Espa\u00F1ol (M\u00E9xico)] - Icon [256x256, 32 bits, PNG]",
+              "RelativeToolTip": "src\\Icon.ico -  [Espa\u00F1ol (M\u00E9xico)] - Icon [256x256, 32 bits, PNG]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2026-10-27T20:32:07.165Z",
+              "EditorCaption": " -  [Espa\u00F1ol (M\u00E9xico)] - Icon [256x256, 32 bits, PNG]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Guardado.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasGenerales\\Guardado.cs",
+              "RelativeDocumentMoniker": "src\\MecanicasGenerales\\Guardado.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasGenerales\\Guardado.cs",
+              "RelativeToolTip": "src\\MecanicasGenerales\\Guardado.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:32:05.476Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Colisiones.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasMapa\\Colisiones.cs",
+              "RelativeDocumentMoniker": "src\\MecanicasMapa\\Colisiones.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasMapa\\Colisiones.cs",
+              "RelativeToolTip": "src\\MecanicasMapa\\Colisiones.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:32:04.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Mapa.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\Mapa.cs",
+              "RelativeDocumentMoniker": "src\\Objetos\\Mapa.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\Mapa.cs",
+              "RelativeToolTip": "src\\Objetos\\Mapa.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwAQAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:57.352Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Personaje.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\Personaje.cs",
+              "RelativeDocumentMoniker": "src\\Objetos\\Personaje.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\Personaje.cs",
+              "RelativeToolTip": "src\\Objetos\\Personaje.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAuwDwAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:50.969Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Game1.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Game1.cs",
+              "RelativeDocumentMoniker": "src\\Game1.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Game1.cs",
+              "RelativeToolTip": "src\\Game1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:12.153Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Sprite.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\Sprite.cs",
+              "RelativeDocumentMoniker": "src\\Objetos\\Sprite.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Objetos\\Sprite.cs",
+              "RelativeToolTip": "src\\Objetos\\Sprite.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:35.371Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MonoGame.Content.Builder.Task.targets",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\build\\MonoGame.Content.Builder.Task.targets",
+              "RelativeDocumentMoniker": "..\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\build\\MonoGame.Content.Builder.Task.targets",
+              "ToolTip": "C:\\Users\\Redes-20\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\build\\MonoGame.Content.Builder.Task.targets",
+              "RelativeToolTip": "..\\.nuget\\packages\\monogame.content.builder.task\\3.8.6\\build\\MonoGame.Content.Builder.Task.targets",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAWwKsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-10-27T20:31:05.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Program.cs",
+              "RelativeDocumentMoniker": "src\\Program.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\Program.cs",
+              "RelativeToolTip": "src\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:08.77Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AtaqueEnemigo.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Enemigo\\AtaqueEnemigo.cs",
+              "RelativeDocumentMoniker": "src\\MecanicasPelea\\Enemigo\\AtaqueEnemigo.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Enemigo\\AtaqueEnemigo.cs",
+              "RelativeToolTip": "src\\MecanicasPelea\\Enemigo\\AtaqueEnemigo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:31.922Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "EstadisticasEnemigo.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Enemigo\\EstadisticasEnemigo.cs",
+              "RelativeDocumentMoniker": "src\\MecanicasPelea\\Enemigo\\EstadisticasEnemigo.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Enemigo\\EstadisticasEnemigo.cs",
+              "RelativeToolTip": "src\\MecanicasPelea\\Enemigo\\EstadisticasEnemigo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:32.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "AtaqueJugador.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Jugador\\AtaqueJugador.cs",
+              "RelativeDocumentMoniker": "src\\MecanicasPelea\\Jugador\\AtaqueJugador.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Jugador\\AtaqueJugador.cs",
+              "RelativeToolTip": "src\\MecanicasPelea\\Jugador\\AtaqueJugador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:32:01.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "EstadisticasJugador.cs",
+              "DocumentMoniker": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Jugador\\EstadisticasJugador.cs",
+              "RelativeDocumentMoniker": "src\\MecanicasPelea\\Jugador\\EstadisticasJugador.cs",
+              "ToolTip": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\MecanicasPelea\\Jugador\\EstadisticasJugador.cs",
+              "RelativeToolTip": "src\\MecanicasPelea\\Jugador\\EstadisticasJugador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-27T20:31:58.569Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

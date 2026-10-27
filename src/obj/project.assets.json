@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
     "net9.0": {
       "MonoGame.Content.Builder.Task/3.8.6": {
@@ -140,19 +140,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ernes\\.nuget\\packages\\": {}
+    "C:\\Users\\Redes-20\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ernes\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\JuegoDecisionQuest.csproj",
+      "projectUniqueName": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
       "projectName": "JuegoDecisionQuest",
-      "projectPath": "C:\\Users\\ernes\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\JuegoDecisionQuest.csproj",
-      "packagesPath": "C:\\Users\\ernes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ernes\\source\\repos\\JuegoDecisionQuest\\JuegoDecisionQuest\\obj\\",
+      "projectPath": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
+      "packagesPath": "C:\\Users\\Redes-20\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ernes\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Redes-20\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -164,7 +164,6 @@
       },
       "frameworks": {
         "net9.0": {
-          "framework": "net9.0",
           "targetAlias": "net9.0",
           "projectReferences": {}
         }
@@ -179,11 +178,10 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "9.0.300"
     },
     "frameworks": {
       "net9.0": {
-        "framework": "net9.0",
         "targetAlias": "net9.0",
         "dependencies": {
           "MonoGame.Content.Builder.Task": {
@@ -223,7 +221,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.320/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

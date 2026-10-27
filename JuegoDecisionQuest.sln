@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.37824.6 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuegoDecisionQuest", "src\JuegoDecisionQuest.csproj", "{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7C9E8C6-19BF-E61F-AEF0-9FBDA753276E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {485BAD82-B010-411D-8DFA-DFA4BE4C98DA}
+	EndGlobalSection
+EndGlobal
