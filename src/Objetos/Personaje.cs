@@ -34,7 +34,8 @@ namespace JuegoDecisionQuest.Objetos
         estado = this.spriteparado;
     }
 
-    //esta parte de acá es la que se encarga de todo el movimiento del personaje
+    //esta parte de acá es la que se encarga de todo el movimiento del personaje. Ponemos el Update acá para no mandar un choclo enorme de código a Game1
+    //de esta manera solo tenés que llamar a la función en Game1 para que funcione
     public void Update(GameTime gameTime)
     {
         // esto es simplemente para que se lea el teclado
