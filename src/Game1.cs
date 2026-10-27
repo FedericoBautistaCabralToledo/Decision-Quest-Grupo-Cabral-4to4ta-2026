@@ -10,9 +10,13 @@ namespace mundoparte3
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Mapa _mapa;
-        public Personaje jugador;
-        Texture2D TexturaPersonaje;
-        Sprite spritejugador;
+        Personaje jugador;
+        Texture2D TexturaParado;
+        Texture2D TexturaDerecha;
+        Texture2D TexturaIzquierda;
+        Sprite parado;
+        Sprite derecha;
+        Sprite izquierda;
 
         public Game1()
         {
@@ -33,9 +37,15 @@ namespace mundoparte3
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            TexturaPersonaje = Content.Load<Texture2D>("caballero_hollow");
-            spritejugador = new Sprite(TexturaPersonaje, new Vector2(0, 0), 64, 64);
-            jugador = new Personaje(15, 100, 10, spritejugador);
+            TexturaParado = Content.Load<Texture2D>("parado");
+            TexturaDerecha = Content.Load<Texture2D>("correrDerecha");
+            TexturaIzquierda = Content.Load<Texture2D>("correrIzquierda");
+            Vector2 posicioninicial = new Vector2(0, 0);
+            
+            parado = new Sprite(TexturaParado, posicioninicial, 200, 100);
+            derecha = new Sprite(TexturaDerecha, posicioninicial, 200, 100);
+            izquierda = new Sprite(TexturaIzquierda, posicioninicial, 200, 100);
+            jugador = new Personaje(15, 100, 10, parado, izquierda, derecha);
 
             _mapa = new Mapa(Content);
         }
