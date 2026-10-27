@@ -83,8 +83,10 @@ namespace JuegoDecisionQuest.Objetos
     public void Draw(SpriteBatch spriteBatch)
     {
         Rectangle rectanguloDestino = new Rectangle(
+            //esto es simplemente las coordenadas de dónde va a iniciar el personaje
             (int)estado.posicion.X,
             (int)estado.posicion.Y,
+            //esto es para el tamaño del personaje
             estado.ancho,
             estado.alto
             );
