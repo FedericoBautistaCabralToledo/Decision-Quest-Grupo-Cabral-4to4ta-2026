@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj": {}
+    "C:\\Users\\ernes\\OneDrive\\Documentos\\GitHub\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj": {
+    "C:\\Users\\ernes\\OneDrive\\Documentos\\GitHub\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
+        "projectUniqueName": "C:\\Users\\ernes\\OneDrive\\Documentos\\GitHub\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
         "projectName": "JuegoDecisionQuest",
-        "projectPath": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
-        "packagesPath": "C:\\Users\\Redes-20\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Redes-20\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\obj\\",
+        "projectPath": "C:\\Users\\ernes\\OneDrive\\Documentos\\GitHub\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
+        "packagesPath": "C:\\Users\\ernes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ernes\\OneDrive\\Documentos\\GitHub\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Redes-20\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\ernes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -26,6 +26,7 @@
         },
         "frameworks": {
           "net9.0": {
+            "framework": "net9.0",
             "targetAlias": "net9.0",
             "projectReferences": {}
           }
@@ -40,31 +41,20 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.300"
+        "SdkAnalysisLevel": "10.0.300"
       },
       "frameworks": {
         "net9.0": {
+          "framework": "net9.0",
           "targetAlias": "net9.0",
           "dependencies": {
             "MonoGame.Content.Builder.Task": {
               "target": "Package",
               "version": "[3.8.*, )"
             },
-            "MonoGame.Framework.Native": {
+            "MonoGame.Framework.DesktopGL": {
               "target": "Package",
-              "version": "[3.8.5, )"
-            },
-            "MonoGame.Runtime.Linux.Vulkan": {
-              "target": "Package",
-              "version": "[3.8.5, )"
-            },
-            "MonoGame.Runtime.Mac.Vulkan": {
-              "target": "Package",
-              "version": "[3.8.5, )"
-            },
-            "MonoGame.Runtime.Windows.Vulkan": {
-              "target": "Package",
-              "version": "[3.8.5, )"
+              "version": "[3.8.*, )"
             }
           },
           "imports": [
@@ -83,7 +73,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.320/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

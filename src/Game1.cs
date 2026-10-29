@@ -54,8 +54,15 @@ namespace JuegoDecisionQuest
             izquierda = new Sprite(TexturaIzquierda, posicioninicial, 200, 100);
             //acá creamos al jugador y le damos los 3 sprites que necesita para lograr mostrar que se está moviendo (además de orgarle vida, defensa y ataque)
             jugador = new Personaje(15, 100, 10, parado, izquierda, derecha);
-
             _mapa = new Mapa(Content);
+
+            //Se crean las colisiones
+            colisiones = new Colisiones(new Rectangle(0, 0, 1000, 750));
+            // Usa la imagen sobreposicion como máscara de colisión.
+            // Content.Load devuelve la misma textura que ya cargó Mapa, no la duplica en memoria.
+            colisiones.CargarMascara(Content.Load<Texture2D>("sobreposicion"));
+
+            _spriteBatch.Draw(Content.Load<Texture2D>("sobreposicion"), new Rectangle(0, 0, 1000, 750), Color.Red * 0.5f);
         }
 
         protected override void Update(GameTime gameTime)
@@ -67,18 +74,20 @@ namespace JuegoDecisionQuest
             //esto lo único que hace es llamar al update del jugador para que pueda moverse el personaje
             jugador.Update(gameTime);
 
+            var raton = Mouse.GetState();
+            Window.Title = $"X: {raton.X}  Y: {raton.Y}";
+
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.Black);
-            
+
             _spriteBatch.Begin();
 
-            jugador.Draw(_spriteBatch);
-
-            _mapa.Dibujar(_spriteBatch);
+            _mapa.Dibujar(_spriteBatch);   // primero el mapa
+            jugador.Draw(_spriteBatch);    // después el personaje, que queda delante
 
             _spriteBatch.End();
 
