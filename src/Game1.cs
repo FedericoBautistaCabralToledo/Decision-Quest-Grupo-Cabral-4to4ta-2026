@@ -3,6 +3,7 @@ using JuegoDecisionQuest.Objetos;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 
 namespace JuegoDecisionQuest
 {
@@ -18,6 +19,7 @@ namespace JuegoDecisionQuest
         Sprite parado;
         Sprite derecha;
         Sprite izquierda;
+        Song MusicaMapa;
 
         Colisiones colisiones;
 
@@ -64,6 +66,13 @@ namespace JuegoDecisionQuest
             // Un píxel blanco, para dibujar rectángulos de depuración
             pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.White });
+
+            //Estas lineas hacen que suene la musica
+            MusicaMapa = Content.Load<Song>("MusicaMapa");   // el nombre del archivo, sin extensión
+
+            MediaPlayer.IsRepeating = true;   // que se repita al terminar
+            MediaPlayer.Volume = 0.2f;        // volumen de 0.0 a 1.0
+            MediaPlayer.Play(MusicaMapa);
         }
 
         protected override void Update(GameTime gameTime)
@@ -85,8 +94,9 @@ namespace JuegoDecisionQuest
 
             jugador.Update(gameTime, colisiones);
 
-            // Diagnóstico: posición del jugador y si su hitbox está tocando un sólido
-            Window.Title = $"X: {(int)jugador.estado.posicion.X}  Y: {(int)jugador.estado.posicion.Y}  Choca: {colisiones.Choca(jugador.Hitbox)}";
+            Window.Title = "DECISION QUEST";
+            // El titulo de la ventana mustra la posición del jugador y si su hitbox está tocando una colision
+            //Window.Title = $"X: {(int)jugador.estado.posicion.X}  Y: {(int)jugador.estado.posicion.Y}  Choca: {colisiones.Choca(jugador.Hitbox)}";
 
             base.Update(gameTime);
         }

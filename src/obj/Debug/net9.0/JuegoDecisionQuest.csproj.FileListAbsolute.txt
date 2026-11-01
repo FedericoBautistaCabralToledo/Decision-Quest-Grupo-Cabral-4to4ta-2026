@@ -39,5 +39,6 @@ C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-202
 C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\correrIzquierda.xnb
 C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\parado.xnb
 C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\mapa.xnb
-C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\sobrepocision.xnb
 C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\sobreposicion.xnb
+C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\MusicaMapa.ogg
+C:\Users\ernes\OneDrive\Documentos\GitHub\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\MusicaMapa.xnb
