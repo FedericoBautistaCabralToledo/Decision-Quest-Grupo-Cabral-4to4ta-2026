@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 
@@ -15,15 +10,19 @@ namespace JuegoDecisionQuest.Objetos
         public int ataque { get; set; }
         public int vida { get; set; }
         public int defensa { get; set; }
-        //esto está relacionado con el desplazamiento del personaje, está medida en pixeles por segundo
+
+        // velocidad del desplazamiento, en pixeles por segundo
         public float velocidad_jugador { get; set; } = 300f;
-        //Esta es una variable auxiliar que se encarga de guardar el estado en el que se encuentra el personaje (quieto o moviendose a izquierda, derecha, abajo y arriba)
+
+        // sprite que se está mostrando ahora mismo (quieto, izquierda o derecha)
         public Sprite estado { get; set; }
-        //todos estos sprites son para cada imagen del personaje, una imagen del pj moviendose a la derecha y viceversa.
-        //En este caso el sprite quieto no va a ser unicamente para cuando está quieto el personaje, sino que también para cuando se mueve para arriba y abajo.
         public Sprite spriteparado;
         public Sprite spritederecha;
         public Sprite spriteizquierda;
+
+        // Zona de colisión del personaje: solo sus PIES, no todo el cuerpo.
+        // La usamos también en Game1 para dibujarla al depurar.
+        public Rectangle Hitbox => CrearHitbox(estado.posicion, estado);
 
         public Personaje(int ataque, int vida, int defensa, Sprite quieto, Sprite izquierda, Sprite derecha)
         {
@@ -33,64 +32,80 @@ namespace JuegoDecisionQuest.Objetos
             this.spriteparado = quieto;
             this.spriteizquierda = izquierda;
             this.spritederecha = derecha;
-            //lo que le estoy diciendo acá es que su estado inicial sea que esté quieto.
+            // el estado inicial es que esté quieto
             estado = this.spriteparado;
         }
 
-        //esta parte de acá es la que se encarga de todo el movimiento del personaje. Ponemos el Update acá para no mandar un choclo enorme de código a Game1
-        //de esta manera solo tenés que llamar a la función en Game1 para que funcione
-        public void Update(GameTime gameTime)
+        // Crea el rectángulo de los pies para una posición dada
+        public Rectangle CrearHitbox(Vector2 pos, Sprite sprite)
         {
-            // esto es simplemente para que se lea el teclado
+            int anchoCaja = 28;
+            int altoCaja = 16;
+
+            return new Rectangle(
+                (int)pos.X + (sprite.ancho - anchoCaja) / 2,   // centrada horizontalmente
+                (int)pos.Y + sprite.alto - altoCaja,           // pegada a la parte de abajo
+                anchoCaja,
+                altoCaja);
+        }
+
+        // Update ahora recibe las colisiones para poder comprobarlas
+        public void Update(GameTime gameTime, Colisiones colisiones)
+        {
             KeyboardState teclas = Keyboard.GetState();
-            // el delta es tiempo real en el que se está moviendo el personaje por cada frame
-            //de esta manera conserva la misma velocidad incluso si tenés 300 fps
-            //sin el delta la velocidad en pixeles por segundo del personaje estaría medida únicamente por cada 1 frame (pixeles por fotograma)
-            //eso provoca que el personaje vaya demasiado rápido
             float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
-            //esto es otra variable auxiliar que guarda la posición del sprite teniendo en cuenta el estado en el que está
-            Vector2 nuevapos = estado.posicion;
+
+            // 1) Leemos las teclas y armamos la dirección (-1, 0 o 1 en cada eje)
+            Vector2 direccion = Vector2.Zero;
             Sprite posicionactual = spriteparado;
-            //esto es una secuencia de if's para cada tecla 
-            //Ejemplo: Si x tecla está presionada, entonces el sprite se mueve a la derecha
-            //estos primeros dos if son para la posición del sprite en las coordenadas X
+
             if (teclas.IsKeyDown(Keys.Left) || teclas.IsKeyDown(Keys.A))
             {
-                //este es un cálculo matemático de MRU (movimiento rectilíneo uniforme) donde la distancia = velocidad x tiempo
-                nuevapos.X -= velocidad_jugador * delta;
+                direccion.X -= 1;
                 posicionactual = spriteizquierda;
             }
             if (teclas.IsKeyDown(Keys.Right) || teclas.IsKeyDown(Keys.D))
             {
-                nuevapos.X += velocidad_jugador * delta;
+                direccion.X += 1;
                 posicionactual = spritederecha;
             }
-
-            //Lo mismo pero para la posición en Y
             if (teclas.IsKeyDown(Keys.Up) || teclas.IsKeyDown(Keys.W))
             {
-                nuevapos.Y -= velocidad_jugador * delta;
-                posicionactual = spriteparado;
+                direccion.Y -= 1;
+                if (direccion.X == 0) posicionactual = spriteparado;
             }
             if (teclas.IsKeyDown(Keys.Down) || teclas.IsKeyDown(Keys.S))
             {
-                nuevapos.Y += velocidad_jugador * delta;
-                posicionactual = spriteparado;
+                direccion.Y += 1;
+                if (direccion.X == 0) posicionactual = spriteparado;
             }
 
-            //Acá estoy tomando la posicion actual del sprite y la estoy guardando dentro del sprite (para que se mueva)
-            posicionactual.posicion = nuevapos;
-            //esto es para que el draw pueda saber que sprite dibujar en pantalla
+            // Cuánto se mueve en este frame (distancia = velocidad x tiempo)
+            Vector2 movimiento = direccion * velocidad_jugador * delta;
+
+            // Movemos y comprobamos colisiones EJE POR EJE.
+            // Si choca en un eje, deshacemos solo ese movimiento y el otro eje sigue funcionando,
+            // así el personaje se desliza por las paredes en vez de quedarse trabado.
+            Vector2 pos = estado.posicion;
+
+            pos.X += movimiento.X;
+            if (colisiones.Choca(CrearHitbox(pos, estado)))
+                pos.X -= movimiento.X;
+
+            pos.Y += movimiento.Y;
+            if (colisiones.Choca(CrearHitbox(pos, estado)))
+                pos.Y -= movimiento.Y;
+
+            // 5) Guardamos la posición final en el sprite que corresponde y lo dejamos como estado
+            posicionactual.posicion = pos;
             estado = posicionactual;
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
             Rectangle rectanguloDestino = new Rectangle(
-                //esto es simplemente las coordenadas de dónde va a iniciar el personaje
                 (int)estado.posicion.X,
                 (int)estado.posicion.Y,
-                //esto es para el tamaño del personaje
                 estado.ancho,
                 estado.alto
                 );

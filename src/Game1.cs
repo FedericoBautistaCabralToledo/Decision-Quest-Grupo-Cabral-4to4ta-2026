@@ -11,16 +11,21 @@ namespace JuegoDecisionQuest
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Mapa _mapa;
-        //esta variable es la que va a guardar al jugador
         Personaje jugador;
-        //estas son todas las texturas que necesita el sprite (las imagenes)
         Texture2D TexturaParado;
         Texture2D TexturaDerecha;
         Texture2D TexturaIzquierda;
-        //y estos son simplemente los sprites para cada textura (para que aparezcan en el juego)
         Sprite parado;
         Sprite derecha;
         Sprite izquierda;
+
+        Colisiones colisiones;
+
+        // Para ver las zonas sólidas mientras se prueba (F1 las muestra/oculta)
+        Texture2D texturaColision;
+        Texture2D pixel;                 //para dibujar la hitbox del jugador
+        bool mostrarColisiones = true;
+        KeyboardState tecladoAnterior;   //el campo "teclado": ahora es local en Update
 
         public Game1()
         {
@@ -41,41 +46,47 @@ namespace JuegoDecisionQuest
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-            //esto carga cada imagen para que puedan usarse y crear los sprites
             TexturaParado = Content.Load<Texture2D>("parado");
             TexturaDerecha = Content.Load<Texture2D>("correrDerecha");
             TexturaIzquierda = Content.Load<Texture2D>("correrIzquierda");
-            //una variable auxiliar que guarda la posicion en la que va a iniciar cada sprite
-            //es para simplemente poner posicioninicial en vez de todo el choclo de new Vector2...
-            Vector2 posicioninicial = new Vector2(0, 0);
-            //acá creamos todos los sprites, le damos la misma posicion de arranque y el mismo tamaño para que no haya conflicto
-            parado = new Sprite(TexturaParado, posicioninicial, 200, 100);
-            derecha = new Sprite(TexturaDerecha, posicioninicial, 200, 100);
-            izquierda = new Sprite(TexturaIzquierda, posicioninicial, 200, 100);
-            //acá creamos al jugador y le damos los 3 sprites que necesita para lograr mostrar que se está moviendo (además de orgarle vida, defensa y ataque)
+
+            Vector2 posicioninicial = new Vector2(496, 363);
+            parado = new Sprite(TexturaParado, posicioninicial, 60, 80);
+            derecha = new Sprite(TexturaDerecha, posicioninicial, 60, 80);
+            izquierda = new Sprite(TexturaIzquierda, posicioninicial, 60, 80);
             jugador = new Personaje(15, 100, 10, parado, izquierda, derecha);
             _mapa = new Mapa(Content);
 
-            //Se crean las colisiones
             colisiones = new Colisiones(new Rectangle(0, 0, 1000, 750));
-            // Usa la imagen sobreposicion como máscara de colisión.
-            // Content.Load devuelve la misma textura que ya cargó Mapa, no la duplica en memoria.
-            colisiones.CargarMascara(Content.Load<Texture2D>("sobreposicion"));
+            texturaColision = Content.Load<Texture2D>("sobreposicion");
+            colisiones.CargarMascara(texturaColision);
 
-            _spriteBatch.Draw(Content.Load<Texture2D>("sobreposicion"), new Rectangle(0, 0, 1000, 750), Color.Red * 0.5f);
+            // Un píxel blanco, para dibujar rectángulos de depuración
+            pixel = new Texture2D(GraphicsDevice, 1, 1);
+            pixel.SetData(new[] { Color.White });
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            // Leemos el teclado en CADA frame (antes se leía solo al crear el juego)
+            KeyboardState teclado = Keyboard.GetState();
+
+            if (teclado.IsKeyDown(Keys.Escape))
             {
                 Exit();
             }
-            //esto lo único que hace es llamar al update del jugador para que pueda moverse el personaje
-            jugador.Update(gameTime);
 
-            var raton = Mouse.GetState();
-            Window.Title = $"X: {raton.X}  Y: {raton.Y}";
+            // F1 muestra u oculta las zonas sólidas
+            if (teclado.IsKeyDown(Keys.F1) && tecladoAnterior.IsKeyUp(Keys.F1))
+            {
+                mostrarColisiones = !mostrarColisiones;
+            }
+            tecladoAnterior = teclado;
+
+            jugador.Update(gameTime, colisiones);
+
+            // Diagnóstico: posición del jugador y si su hitbox está tocando un sólido
+            Window.Title = $"X: {(int)jugador.estado.posicion.X}  Y: {(int)jugador.estado.posicion.Y}  Choca: {colisiones.Choca(jugador.Hitbox)}";
 
             base.Update(gameTime);
         }
@@ -86,8 +97,16 @@ namespace JuegoDecisionQuest
 
             _spriteBatch.Begin();
 
-            _mapa.Dibujar(_spriteBatch);   // primero el mapa
-            jugador.Draw(_spriteBatch);    // después el personaje, que queda delante
+            _mapa.Dibujar(_spriteBatch);
+            jugador.Draw(_spriteBatch);
+
+            if (mostrarColisiones)
+            {
+                // La máscara que realmente se cargó, encima del mapa
+                _spriteBatch.Draw(texturaColision, new Rectangle(0, 0, 1000, 750), Color.White * 0.6f);
+                // Los pies del jugador, en azul
+                _spriteBatch.Draw(pixel, jugador.Hitbox, Color.Blue * 0.8f);
+            }
 
             _spriteBatch.End();
 
