@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("JuegoDecisionQuest")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0304f6861808219235f9266c5d2a6d59afc15cd2")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84ef3bb78ae4c29ffa0558af918a9a63c87a7980")]
 [assembly: System.Reflection.AssemblyProductAttribute("JuegoDecisionQuest")]
 [assembly: System.Reflection.AssemblyTitleAttribute("JuegoDecisionQuest")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
