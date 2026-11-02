@@ -12,22 +12,40 @@ namespace JuegoDecisionQuest
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Mapa _mapa;
+
         Personaje jugador;
+
+        // Texturas del jugador
         Texture2D TexturaParado;
         Texture2D TexturaDerecha;
         Texture2D TexturaIzquierda;
+
         Sprite parado;
         Sprite derecha;
         Sprite izquierda;
+
+        // NPC RUEE
+        NPC ruee;
+        Texture2D texturaRuee;
+
+        // OTROS DEMONIOS
+        NPC demonio1;
+        NPC demonio2;
+        NPC demonio3;
+
+        Texture2D texturaDemonio1;
+        Texture2D texturaDemonio2;
+        Texture2D texturaDemonio3;
+
         Song MusicaMapa;
 
         Colisiones colisiones;
 
         // Para ver las zonas sólidas mientras se prueba (F1 las muestra/oculta)
         Texture2D texturaColision;
-        Texture2D pixel;                 //para dibujar la hitbox del jugador
+        Texture2D pixel;
         bool mostrarColisiones = true;
-        KeyboardState tecladoAnterior;   //el campo "teclado": ahora es local en Update
+        KeyboardState tecladoAnterior;
 
         public Game1()
         {
@@ -48,36 +66,113 @@ namespace JuegoDecisionQuest
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // Cargar sprites del jugador
             TexturaParado = Content.Load<Texture2D>("parado");
             TexturaDerecha = Content.Load<Texture2D>("correrDerecha");
             TexturaIzquierda = Content.Load<Texture2D>("correrIzquierda");
 
-            Vector2 posicioninicial = new Vector2(496, 363);
-            parado = new Sprite(TexturaParado, posicioninicial, 60, 80);
-            derecha = new Sprite(TexturaDerecha, posicioninicial, 60, 80);
-            izquierda = new Sprite(TexturaIzquierda, posicioninicial, 60, 80);
-            jugador = new Personaje(15, 100, 10, parado, izquierda, derecha);
+            Vector2 posicioninicial = new Vector2(471, 72);
+
+            parado = new Sprite(
+                TexturaParado,
+                posicioninicial,
+                60,
+                80
+            );
+
+            derecha = new Sprite(
+                TexturaDerecha,
+                posicioninicial,
+                60,
+                80
+            );
+
+            izquierda = new Sprite(
+                TexturaIzquierda,
+                posicioninicial,
+                60,
+                80
+            );
+
+            jugador = new Personaje(
+                15,
+                100,
+                10,
+                parado,
+                izquierda,
+                derecha
+            );
+
+            // Cargar mapa
             _mapa = new Mapa(Content);
 
-            colisiones = new Colisiones(new Rectangle(0, 0, 1000, 750));
+
+            // CARGAR NPC RUEE
+
+            texturaRuee = Content.Load<Texture2D>("Ruee");
+
+            ruee = new NPC(
+                texturaRuee,
+                new Vector2(720, 535),
+                80,
+                90
+            );
+
+
+            // CARGAR LOS OTROS DEMONIOS
+
+            texturaDemonio1 = Content.Load<Texture2D>("Demonio1");
+            texturaDemonio2 = Content.Load<Texture2D>("Demonio2");
+            texturaDemonio3 = Content.Load<Texture2D>("Demonio3");
+
+            demonio1 = new NPC(
+                texturaDemonio1,
+                new Vector2(271, 567),
+                80,
+                90
+            );
+
+            demonio2 = new NPC(
+                texturaDemonio2,
+                new Vector2(60, 72),
+                80,
+                90
+            );
+
+            demonio3 = new NPC(
+                texturaDemonio3,
+                new Vector2(821, 62),
+                80,
+                90
+            );
+
+
+            // COLISIONES
+
+            colisiones = new Colisiones(
+                new Rectangle(0, 0, 1000, 750)
+            );
+
             texturaColision = Content.Load<Texture2D>("sobreposicion");
+
             colisiones.CargarMascara(texturaColision);
 
-            // Un píxel blanco, para dibujar rectángulos de depuración
+            // Un píxel blanco para dibujar rectángulos de depuración
             pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.White });
 
-            //Estas lineas hacen que suene la musica
-            MusicaMapa = Content.Load<Song>("MusicaMapa");   // el nombre del archivo, sin extensión
+            // Música
+            MusicaMapa = Content.Load<Song>("MusicaMapa");
 
-            MediaPlayer.IsRepeating = true;   // que se repita al terminar
-            MediaPlayer.Volume = 0.2f;        // volumen de 0.0 a 1.0
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = 0.2f;
             MediaPlayer.Play(MusicaMapa);
         }
 
         protected override void Update(GameTime gameTime)
         {
-            // Leemos el teclado en CADA frame (antes se leía solo al crear el juego)
+            // Leemos el teclado en cada frame
             KeyboardState teclado = Keyboard.GetState();
 
             if (teclado.IsKeyDown(Keys.Escape))
@@ -86,17 +181,16 @@ namespace JuegoDecisionQuest
             }
 
             // F1 muestra u oculta las zonas sólidas
-            if (teclado.IsKeyDown(Keys.F1) && tecladoAnterior.IsKeyUp(Keys.F1))
+            if (teclado.IsKeyDown(Keys.F1) &&
+                tecladoAnterior.IsKeyUp(Keys.F1))
             {
                 mostrarColisiones = !mostrarColisiones;
             }
+
             tecladoAnterior = teclado;
 
+            // Movimiento del jugador
             jugador.Update(gameTime, colisiones);
-
-            Window.Title = "DECISION QUEST";
-            // El titulo de la ventana mustra la posición del jugador y si su hitbox está tocando una colision
-            //Window.Title = $"X: {(int)jugador.estado.posicion.X}  Y: {(int)jugador.estado.posicion.Y}  Choca: {colisiones.Choca(jugador.Hitbox)}";
 
             base.Update(gameTime);
         }
@@ -107,20 +201,43 @@ namespace JuegoDecisionQuest
 
             _spriteBatch.Begin();
 
+            // Dibujar mapa
             _mapa.Dibujar(_spriteBatch);
+
+            // Dibujar a Ruee
+            ruee.Draw(_spriteBatch);
+
+            // Dibujar los otros demonios
+            demonio1.Draw(_spriteBatch);
+            demonio2.Draw(_spriteBatch);
+            demonio3.Draw(_spriteBatch);
+
+            // Dibujar jugador
             jugador.Draw(_spriteBatch);
 
+            // Mostrar colisiones
             if (mostrarColisiones)
             {
-                // La máscara que realmente se cargó, encima del mapa
-                _spriteBatch.Draw(texturaColision, new Rectangle(0, 0, 1000, 750), Color.White * 0.6f);
-                // Los pies del jugador, en azul
-                _spriteBatch.Draw(pixel, jugador.Hitbox, Color.Blue * 0.8f);
+                _spriteBatch.Draw(
+                    texturaColision,
+                    new Rectangle(0, 0, 1000, 750),
+                    Color.White * 0.6f
+                );
+
+                // Pies del jugador
+                _spriteBatch.Draw(
+                    pixel,
+                    jugador.Hitbox,
+                    Color.Blue * 0.8f
+                );
             }
 
             _spriteBatch.End();
 
             base.Draw(gameTime);
+
+            // El titulo de la ventana muestra la posición del jugador y si su hitbox está tocando una colision
+            Window.Title = $"X: {(int)jugador.estado.posicion.X} Y: {(int)jugador.estado.posicion.Y} Choca: {colisiones.Choca(jugador.Hitbox)}";
         }
     }
 }

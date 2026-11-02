@@ -11,10 +11,10 @@ namespace JuegoDecisionQuest.Objetos
         public int vida { get; set; }
         public int defensa { get; set; }
 
-        //esto está relacionado con el desplazamiento del personaje, está medida en pixeles por segundo
+        // velocidad del desplazamiento, en pixeles por segundo
         public float velocidad_jugador { get; set; } = 300f;
 
-        //Esta es una variable auxiliar que se encarga de guardar el estado en el que se encuentra el sprite (quieto o moviendose a izquierda, derecha, abajo y arriba)
+        // sprite que se está mostrando ahora mismo (quieto, izquierda o derecha)
         public Sprite estado { get; set; }
         public Sprite spriteparado;
         public Sprite spritederecha;
@@ -32,7 +32,7 @@ namespace JuegoDecisionQuest.Objetos
             this.spriteparado = quieto;
             this.spriteizquierda = izquierda;
             this.spritederecha = derecha;
-            //lo que le estoy diciendo acá es que su estado inicial sea que esté quieto.
+            // el estado inicial es que esté quieto
             estado = this.spriteparado;
         }
 
@@ -52,12 +52,7 @@ namespace JuegoDecisionQuest.Objetos
         // Update ahora recibe las colisiones para poder comprobarlas
         public void Update(GameTime gameTime, Colisiones colisiones)
         {
-            // esto es simplemente para que se lea el teclado
             KeyboardState teclas = Keyboard.GetState();
-            // el delta es tiempo real en el que se está moviendo el personaje por cada frame
-            //de esta manera conserva la misma velocidad incluso si tenés 300 fps
-            //sin el delta la velocidad en pixeles por segundo del personaje estaría medida únicamente por cada 1 frame (pixeles por fotograma)
-            //eso provoca que el personaje vaya demasiado rápido
             float delta = (float)gameTime.ElapsedGameTime.TotalSeconds;
 
             // 1) Leemos las teclas y armamos la dirección (-1, 0 o 1 en cada eje)

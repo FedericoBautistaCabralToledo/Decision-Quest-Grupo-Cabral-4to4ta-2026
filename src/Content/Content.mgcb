@@ -39,12 +39,44 @@
 /processorParam:Version=3.8.5.0
 /build:correrIzquierda.png
 
-#begin Dum loopy thing.mp3
-/importer:Mp3Importer
-/processor:SongProcessor
-/processorParam:Quality=Best
+#begin Demonio1.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
-/build:Dum loopy thing.mp3
+/build:Demonio1.png
+
+#begin Demonio2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.0
+/build:Demonio2.png
+
+#begin Demonio3.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.0
+/build:Demonio3.png
 
 #begin mapa.png
 /importer:TextureImporter
@@ -59,6 +91,13 @@
 /processorParam:Version=3.8.5.0
 /build:mapa.png
 
+#begin MusicaMapa.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.0
+/build:MusicaMapa.mp3
+
 #begin parado.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -71,6 +110,19 @@
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
 /build:parado.png
+
+#begin Ruee.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.0
+/build:Ruee.png
 
 #begin sobreposicion.png
 /importer:TextureImporter
