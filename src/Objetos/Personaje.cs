@@ -39,8 +39,8 @@ namespace JuegoDecisionQuest.Objetos
         // Crea el rectángulo de los pies para una posición dada
         public Rectangle CrearHitbox(Vector2 pos, Sprite sprite)
         {
-            int anchoCaja = 28;
-            int altoCaja = 16;
+            int anchoCaja = 12;
+            int altoCaja = 10;
 
             return new Rectangle(
                 (int)pos.X + (sprite.ancho - anchoCaja) / 2,   // centrada horizontalmente

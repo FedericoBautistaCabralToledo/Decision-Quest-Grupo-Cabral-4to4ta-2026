@@ -7,11 +7,22 @@ using Microsoft.Xna.Framework.Media;
 
 namespace JuegoDecisionQuest
 {
+    // Definimos los posibles estados del juego
+    public enum EstadoJuego
+    {
+        Menu,
+        Jugando
+    }
+
     public class Game1 : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         private Mapa _mapa;
+        private MenuInicio _menu;
+
+        // Variable para controlar en qué pantalla estamos
+        private EstadoJuego _estadoActual = EstadoJuego.Menu;
 
         Personaje jugador;
 
@@ -107,11 +118,8 @@ namespace JuegoDecisionQuest
             // Cargar mapa
             _mapa = new Mapa(Content);
 
-
             // CARGAR NPC RUEE
-
             texturaRuee = Content.Load<Texture2D>("Ruee");
-
             ruee = new NPC(
                 texturaRuee,
                 new Vector2(720, 535),
@@ -119,9 +127,7 @@ namespace JuegoDecisionQuest
                 90
             );
 
-
             // CARGAR LOS OTROS DEMONIOS
-
             texturaDemonio1 = Content.Load<Texture2D>("Demonio1");
             texturaDemonio2 = Content.Load<Texture2D>("Demonio2");
             texturaDemonio3 = Content.Load<Texture2D>("Demonio3");
@@ -147,32 +153,31 @@ namespace JuegoDecisionQuest
                 90
             );
 
-
             // COLISIONES
-
             colisiones = new Colisiones(
                 new Rectangle(0, 0, 1000, 750)
             );
 
             texturaColision = Content.Load<Texture2D>("sobreposicion");
-
             colisiones.CargarMascara(texturaColision);
 
             // Un píxel blanco para dibujar rectángulos de depuración
             pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.White });
 
-            // Música
-            MusicaMapa = Content.Load<Song>("MusicaMapa");
+            // SOLUCIÓN: Inicializar el menú pasándole el ContentManager obligatorio
+            _menu = new MenuInicio(Content);
 
+            // Música del juego
+            MusicaMapa = Content.Load<Song>("MusicaMapa");
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.2f;
-            MediaPlayer.Play(MusicaMapa);
+
+            // NOTA: Quitamos el MediaPlayer.Play de aquí para que no suene en el menú de inicio.
         }
 
         protected override void Update(GameTime gameTime)
         {
-            // Leemos el teclado en cada frame
             KeyboardState teclado = Keyboard.GetState();
 
             if (teclado.IsKeyDown(Keys.Escape))
@@ -180,17 +185,42 @@ namespace JuegoDecisionQuest
                 Exit();
             }
 
-            // F1 muestra u oculta las zonas sólidas
-            if (teclado.IsKeyDown(Keys.F1) &&
-                tecladoAnterior.IsKeyUp(Keys.F1))
+            if (teclado.IsKeyDown(Keys.F1) && tecladoAnterior.IsKeyUp(Keys.F1))
             {
                 mostrarColisiones = !mostrarColisiones;
             }
 
             tecladoAnterior = teclado;
 
-            // Movimiento del jugador
-            jugador.Update(gameTime, colisiones);
+            // --- LÓGICA DEL MENÚ CON DETECCIÓN DE RATÓN ---
+            if (_estadoActual == EstadoJuego.Menu)
+            {
+                MouseState raton = Mouse.GetState();
+
+                // Verificamos si se presionó el botón izquierdo del mouse
+                if (raton.LeftButton == ButtonState.Pressed)
+                {
+                    // Creamos un punto en la posición actual del cursor
+                    Point posicionRaton = new Point(raton.X, raton.Y);
+
+                    // ¿El cursor está dentro del botón de Inicio?
+                    if (_menu.RectanguloInicio.Contains(posicionRaton))
+                    {
+                        _estadoActual = EstadoJuego.Jugando;
+                        MediaPlayer.Play(MusicaMapa); // Inicia la música del juego
+                    }
+
+                    // ¿El cursor está dentro del botón de Salir?
+                    else if (_menu.RectanguloSalir.Contains(posicionRaton))
+                    {
+                        Exit(); // Cierra el juego de inmediato
+                    }
+                }
+            }
+            else if (_estadoActual == EstadoJuego.Jugando)
+            {
+                jugador.Update(gameTime, colisiones);
+            }
 
             base.Update(gameTime);
         }
@@ -201,43 +231,51 @@ namespace JuegoDecisionQuest
 
             _spriteBatch.Begin();
 
-            // Dibujar mapa
-            _mapa.Dibujar(_spriteBatch);
-
-            // Dibujar a Ruee
-            ruee.Draw(_spriteBatch);
-
-            // Dibujar los otros demonios
-            demonio1.Draw(_spriteBatch);
-            demonio2.Draw(_spriteBatch);
-            demonio3.Draw(_spriteBatch);
-
-            // Dibujar jugador
-            jugador.Draw(_spriteBatch);
-
-            // Mostrar colisiones
-            if (mostrarColisiones)
+            if (_estadoActual == EstadoJuego.Menu)
             {
-                _spriteBatch.Draw(
-                    texturaColision,
-                    new Rectangle(0, 0, 1000, 750),
-                    Color.White * 0.6f
-                );
+                // Si estamos en el menú, renderizamos únicamente el menú de inicio
+                _menu.Dibujar(_spriteBatch);
+            }
+            else if (_estadoActual == EstadoJuego.Jugando)
+            {
+                // Si estamos jugando, renderizamos todo el mundo del juego
+                _mapa.Dibujar(_spriteBatch);
+                ruee.Draw(_spriteBatch);
+                demonio1.Draw(_spriteBatch);
+                demonio2.Draw(_spriteBatch);
+                demonio3.Draw(_spriteBatch);
+                jugador.Draw(_spriteBatch);
 
-                // Pies del jugador
-                _spriteBatch.Draw(
-                    pixel,
-                    jugador.Hitbox,
-                    Color.Blue * 0.8f
-                );
+                // Mostrar colisiones en tiempo de juego si F1 está activado
+                if (mostrarColisiones)
+                {
+                    _spriteBatch.Draw(
+                        texturaColision,
+                        new Rectangle(0, 0, 1000, 750),
+                        Color.White * 0.6f
+                    );
+
+                    _spriteBatch.Draw(
+                        pixel,
+                        jugador.Hitbox,
+                        Color.Blue * 0.8f
+                    );
+                }
             }
 
             _spriteBatch.End();
 
             base.Draw(gameTime);
 
-            // El titulo de la ventana muestra la posición del jugador y si su hitbox está tocando una colision
-            Window.Title = $"X: {(int)jugador.estado.posicion.X} Y: {(int)jugador.estado.posicion.Y} Choca: {colisiones.Choca(jugador.Hitbox)}";
+            // Actualizar título de la ventana dinámicamente según el estado
+            if (_estadoActual == EstadoJuego.Jugando)
+            {
+                Window.Title = $"X: {(int)jugador.estado.posicion.X} Y: {(int)jugador.estado.posicion.Y} Choca: {colisiones.Choca(jugador.Hitbox)}";
+            }
+            else
+            {
+                Window.Title = "Menu de Inicio - Usa el mouse para seleccionar una opcion";
+            }
         }
     }
 }

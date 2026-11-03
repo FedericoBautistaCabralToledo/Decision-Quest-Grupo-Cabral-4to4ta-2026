@@ -90,3 +90,6 @@ C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\C
 C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\Demonio1.xnb
 C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\Demonio2.xnb
 C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\Demonio3.xnb
+C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\BotonInicio.xnb
+C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\BotonSalida.xnb
+C:\Users\Redes-20\Decision-Quest-Grupo-Cabral-4to4ta-2026\src\bin\Debug\net9.0\Content\MenuTitulo.xnb
