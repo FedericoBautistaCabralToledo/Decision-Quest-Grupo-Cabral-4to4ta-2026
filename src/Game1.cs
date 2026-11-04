@@ -82,9 +82,12 @@ namespace JuegoDecisionQuest
             TexturaParado = Content.Load<Texture2D>("parado");
             TexturaDerecha = Content.Load<Texture2D>("correrDerecha");
             TexturaIzquierda = Content.Load<Texture2D>("correrIzquierda");
-
+            
+            //una variable auxiliar que guarda la posicion en la que va a iniciar cada sprite
+            //es para simplemente poner posicioninicial en vez de todo el choclo de new Vector2...
             Vector2 posicioninicial = new Vector2(471, 72);
 
+            //acá creamos todos los sprites, le damos la misma posicion de arranque y el mismo tamaño para que no haya conflicto
             parado = new Sprite(
                 TexturaParado,
                 posicioninicial,
@@ -106,6 +109,7 @@ namespace JuegoDecisionQuest
                 80
             );
 
+            //acá creamos al jugador y le damos los 3 sprites que necesita para lograr mostrar que se está moviendo (además de orgarle vida, defensa y ataque)
             jugador = new Personaje(
                 15,
                 100,
