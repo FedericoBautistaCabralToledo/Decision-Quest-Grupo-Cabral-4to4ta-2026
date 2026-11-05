@@ -86,7 +86,7 @@ namespace JuegoDecisionQuest.Objetos
             }
 
             // Cuánto se mueve en este frame (distancia = velocidad x tiempo)
-            Vector2 movimiento = direccion * velocidad_jugador * delta;
+            Vector2 movimiento = direccion * velocidad_jugador * delta/2;
 
             // Movemos y comprobamos colisiones EJE POR EJE.
             // Si choca en un eje, deshacemos solo ese movimiento y el otro eje sigue funcionando,

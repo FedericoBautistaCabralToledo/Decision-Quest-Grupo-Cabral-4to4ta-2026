@@ -20,6 +20,7 @@ namespace JuegoDecisionQuest
         private SpriteBatch _spriteBatch;
         private Mapa _mapa;
         private MenuInicio _menu;
+        private Camara _camara;
 
         // Variable para controlar en qué pantalla estamos
         private EstadoJuego _estadoActual = EstadoJuego.Menu;
@@ -55,7 +56,7 @@ namespace JuegoDecisionQuest
         // Para ver las zonas sólidas mientras se prueba (F1 las muestra/oculta)
         Texture2D texturaColision;
         Texture2D pixel;
-        bool mostrarColisiones = true;
+        bool mostrarColisiones = false;
         KeyboardState tecladoAnterior;
 
         public Game1()
@@ -82,31 +83,39 @@ namespace JuegoDecisionQuest
             TexturaParado = Content.Load<Texture2D>("parado");
             TexturaDerecha = Content.Load<Texture2D>("correrDerecha");
             TexturaIzquierda = Content.Load<Texture2D>("correrIzquierda");
-            
+
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+            // Inicializar la cámara usando el Viewport correcto del GraphicsDevice
+            _camara = new Camara(GraphicsDevice.Viewport);
+
+            _camara = new Camara(GraphicsDevice.Viewport);
+            _camara.Zoom = 2.0f; // Ajusta este número (1.5f, 2.0f, 0.5f para alejar, etc.)
+
+
             //una variable auxiliar que guarda la posicion en la que va a iniciar cada sprite
             //es para simplemente poner posicioninicial en vez de todo el choclo de new Vector2...
-            Vector2 posicioninicial = new Vector2(471, 72);
+            Vector2 posicioninicial = new Vector2(450, 42);
 
             //acá creamos todos los sprites, le damos la misma posicion de arranque y el mismo tamaño para que no haya conflicto
             parado = new Sprite(
                 TexturaParado,
                 posicioninicial,
-                60,
-                80
+                120,
+                60
             );
 
             derecha = new Sprite(
                 TexturaDerecha,
                 posicioninicial,
-                60,
-                80
+                120,
+                60
             );
 
             izquierda = new Sprite(
                 TexturaIzquierda,
                 posicioninicial,
-                60,
-                80
+                120,
+                60
             );
 
             //acá creamos al jugador y le damos los 3 sprites que necesita para lograr mostrar que se está moviendo (además de orgarle vida, defensa y ataque)
@@ -196,7 +205,7 @@ namespace JuegoDecisionQuest
 
             tecladoAnterior = teclado;
 
-            // --- LÓGICA DEL MENÚ CON DETECCIÓN DE RATÓN ---
+            //Logica del menu que detecta el mouse
             if (_estadoActual == EstadoJuego.Menu)
             {
                 MouseState raton = Mouse.GetState();
@@ -207,14 +216,14 @@ namespace JuegoDecisionQuest
                     // Creamos un punto en la posición actual del cursor
                     Point posicionRaton = new Point(raton.X, raton.Y);
 
-                    // ¿El cursor está dentro del botón de Inicio?
+                    // El cursor está dentro del botón de Inicio?
                     if (_menu.RectanguloInicio.Contains(posicionRaton))
                     {
-                        _estadoActual = EstadoJuego.Jugando;
+                        _estadoActual = EstadoJuego.Jugando; //Inicia el juego inicial
                         MediaPlayer.Play(MusicaMapa); // Inicia la música del juego
                     }
 
-                    // ¿El cursor está dentro del botón de Salir?
+                    //¿El cursor está dentro del botón de Salir?
                     else if (_menu.RectanguloSalir.Contains(posicionRaton))
                     {
                         Exit(); // Cierra el juego de inmediato
@@ -224,7 +233,10 @@ namespace JuegoDecisionQuest
             else if (_estadoActual == EstadoJuego.Jugando)
             {
                 jugador.Update(gameTime, colisiones);
+                _camara.Seguir(jugador.Hitbox);
             }
+
+          
 
             base.Update(gameTime);
         }
@@ -233,16 +245,21 @@ namespace JuegoDecisionQuest
         {
             GraphicsDevice.Clear(Color.Black);
 
-            _spriteBatch.Begin();
+            GraphicsDevice.Clear(Color.Black);
 
             if (_estadoActual == EstadoJuego.Menu)
             {
-                // Si estamos en el menú, renderizamos únicamente el menú de inicio
+                // El menú se inicia de forma normal (estático en pantalla)
+                _spriteBatch.Begin();
                 _menu.Dibujar(_spriteBatch);
+                _spriteBatch.End();
             }
             else if (_estadoActual == EstadoJuego.Jugando)
             {
-                // Si estamos jugando, renderizamos todo el mundo del juego
+                // IMPORTANTE: Pasamos la matriz de transformación de la cámara aquí
+                _spriteBatch.Begin(transformMatrix: _camara.Transformacion);
+
+                // Todo lo que se dibuje aquí dentro se moverá junto con la cámara
                 _mapa.Dibujar(_spriteBatch);
                 ruee.Draw(_spriteBatch);
                 demonio1.Draw(_spriteBatch);
@@ -250,24 +267,15 @@ namespace JuegoDecisionQuest
                 demonio3.Draw(_spriteBatch);
                 jugador.Draw(_spriteBatch);
 
-                // Mostrar colisiones en tiempo de juego si F1 está activado
+                // Mostrar colisiones si F1 está activado
                 if (mostrarColisiones)
                 {
-                    _spriteBatch.Draw(
-                        texturaColision,
-                        new Rectangle(0, 0, 1000, 750),
-                        Color.White * 0.6f
-                    );
-
-                    _spriteBatch.Draw(
-                        pixel,
-                        jugador.Hitbox,
-                        Color.Blue * 0.8f
-                    );
+                    _spriteBatch.Draw(texturaColision, new Rectangle(0, 0, 1000, 750), Color.White * 0.6f);
+                    _spriteBatch.Draw(pixel, jugador.Hitbox, Color.Blue * 0.8f);
                 }
-            }
 
-            _spriteBatch.End();
+                _spriteBatch.End();
+            }
 
             base.Draw(gameTime);
 
@@ -278,7 +286,7 @@ namespace JuegoDecisionQuest
             }
             else
             {
-                Window.Title = "Menu de Inicio - Usa el mouse para seleccionar una opcion";
+                Window.Title = "DECISION QUEST";
             }
         }
     }
