@@ -104,6 +104,14 @@
 /processorParam:Version=3.8.5.0
 /build:demonio3.png;Demonio3.png
 
+#begin fuentes/fuentetextos.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:PremultiplyAlpha=True
+/processorParam:TextureFormat=Compressed
+/processorParam:Version=3.8.5.0
+/build:fuentes/fuentetextos.spritefont
+
 #begin mapa.png
 /importer:TextureImporter
 /processor:TextureProcessor

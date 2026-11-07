@@ -22,6 +22,12 @@ namespace JuegoDecisionQuest
         private MenuInicio _menu;
         private Camara _camara;
 
+        //parte de dialogo
+        Texture2D texturaC;
+        Rectangle caja;
+        CasillaDialogo dialogo;
+        SpriteFont fuentedialogo;
+
         // Variable para controlar en qué pantalla estamos
         private EstadoJuego _estadoActual = EstadoJuego.Menu;
 
@@ -79,10 +85,24 @@ namespace JuegoDecisionQuest
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            
+
             // Cargar sprites del jugador
             TexturaParado = Content.Load<Texture2D>("parado");
             TexturaDerecha = Content.Load<Texture2D>("correrDerecha");
             TexturaIzquierda = Content.Load<Texture2D>("correrIzquierda");
+            fuentedialogo = Content.Load<SpriteFont>("fuentes/fuentetextos");
+
+            //Parte de dialogos
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            texturaC = new Texture2D(GraphicsDevice, 1, 1);
+            texturaC.SetData(new[] { Color.White });
+
+            //el graphics device view port define automáticamente el tamaño de la pantalla sin que tengamos que hacerlo manualmente
+            caja = new Rectangle(20, GraphicsDevice.Viewport.Height - 150, GraphicsDevice.Viewport.Width - 40, 130);
+
+            dialogo = new CasillaDialogo(texturaC, caja, fuentedialogo);
 
             _spriteBatch = new SpriteBatch(GraphicsDevice);
             // Inicializar la cámara usando el Viewport correcto del GraphicsDevice
@@ -193,6 +213,7 @@ namespace JuegoDecisionQuest
         {
             KeyboardState teclado = Keyboard.GetState();
 
+            
             if (teclado.IsKeyDown(Keys.Escape))
             {
                 Exit();
@@ -236,7 +257,9 @@ namespace JuegoDecisionQuest
                 _camara.Seguir(jugador.Hitbox);
             }
 
-          
+            dialogo.Update();
+
+
 
             base.Update(gameTime);
         }
@@ -246,6 +269,7 @@ namespace JuegoDecisionQuest
             GraphicsDevice.Clear(Color.Black);
 
             GraphicsDevice.Clear(Color.Black);
+            
 
             if (_estadoActual == EstadoJuego.Menu)
             {
@@ -266,6 +290,8 @@ namespace JuegoDecisionQuest
                 demonio2.Draw(_spriteBatch);
                 demonio3.Draw(_spriteBatch);
                 jugador.Draw(_spriteBatch);
+                dialogo.Draw(_spriteBatch);
+
 
                 // Mostrar colisiones si F1 está activado
                 if (mostrarColisiones)
@@ -273,6 +299,12 @@ namespace JuegoDecisionQuest
                     _spriteBatch.Draw(texturaColision, new Rectangle(0, 0, 1000, 750), Color.White * 0.6f);
                     _spriteBatch.Draw(pixel, jugador.Hitbox, Color.Blue * 0.8f);
                 }
+                
+                _spriteBatch.End();
+
+                _spriteBatch.Begin();
+
+                dialogo.Draw(_spriteBatch);
 
                 _spriteBatch.End();
             }
