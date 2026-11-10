@@ -1,8 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using System;
-using System.IO.Pipelines;
 using System.Text;
 
 public class CasillaDialogo
@@ -11,10 +8,11 @@ public class CasillaDialogo
     Rectangle caja;
     SpriteFont fuente;
 
-    bool visible = false;
+    string nombre = "";
+    string texto = "";
 
-    string nombre = "Fernando";
-    string texto = "Hola, soy un npc";
+    // Game1 consulta esto para saber si hay un diálogo abierto
+    public bool Visible { get; private set; }
 
     public CasillaDialogo(Texture2D textura, Rectangle caja, SpriteFont fuente)
     {
@@ -23,31 +21,49 @@ public class CasillaDialogo
         this.fuente = fuente;
     }
 
-    public void Update()
+    // Abre el diálogo con el nombre y el texto del NPC con el que se habla
+    public void Mostrar(string nombre, string texto)
     {
-        KeyboardState teclado = Keyboard.GetState();
+        this.nombre = nombre;
+        this.texto = AjustarTexto(texto, caja.Width - 30);
+        Visible = true;
+    }
 
-        if (teclado.IsKeyDown(Keys.E))
-            visible = true;
-
-        if (teclado.IsKeyDown(Keys.Q))
-            visible = false;
+    public void Ocultar()
+    {
+        Visible = false;
     }
 
     public void Draw(SpriteBatch spriteBatch)
     {
-        
-        if (visible)
-        {
-            
-            spriteBatch.Draw(textura, caja, Color.Black);
+        if (!Visible) return;
 
-            Vector2 posicion = new Vector2(caja.X + 15, caja.Y + 12);
-            Vector2 posicion2 = new Vector2(caja.X + 15, caja.Y + 45);
-            spriteBatch.DrawString(fuente, nombre, posicion, Color.Yellow);
-            spriteBatch.DrawString(fuente, texto, posicion2, Color.White);
-            
+        spriteBatch.Draw(textura, caja, Color.Black);
+        spriteBatch.DrawString(fuente, nombre, new Vector2(caja.X + 15, caja.Y + 12), Color.Yellow);
+        spriteBatch.DrawString(fuente, texto, new Vector2(caja.X + 15, caja.Y + 45), Color.White);
+    }
+
+    // Inserta saltos de línea cuando una palabra ya no cabe en el ancho disponible
+    private string AjustarTexto(string texto, float anchoMaximo)
+    {
+        var resultado = new StringBuilder();
+        float anchoLinea = 0;
+        float anchoEspacio = fuente.MeasureString(" ").X;
+
+        foreach (string palabra in texto.Split(' '))
+        {
+            float anchoPalabra = fuente.MeasureString(palabra).X;
+
+            if (anchoLinea + anchoPalabra > anchoMaximo && anchoLinea > 0)
+            {
+                resultado.Append('\n');
+                anchoLinea = 0;
+            }
+
+            resultado.Append(palabra).Append(' ');
+            anchoLinea += anchoPalabra + anchoEspacio;
         }
-        
+
+        return resultado.ToString().TrimEnd();
     }
 }

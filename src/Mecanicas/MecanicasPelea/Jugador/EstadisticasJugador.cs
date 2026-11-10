@@ -1,22 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JuegoDecisionQuest.MecanicasPelea.Jugador
+﻿namespace JuegoDecisionQuest.Objetos.MecanicasPelea.Jugador
 {
     public class EstadisticasJugador
     {
-        int vida { get; set; }
-        int ataque { get; set; }
-        int defensa { get; set; }
-        
-        public EstadisticasJugador(int vida, int ataque, int defensa)
+        public int Vida { get; private set; }
+        public int VidaMaxima { get; private set; }
+        public int Ataque { get; private set; }
+
+        public EstadisticasJugador()
         {
-            this.vida = vida;
-            this.ataque = ataque;
-            this.defensa = defensa;
+            Vida = 150;
+            VidaMaxima = 150;
+            Ataque = 40;
+        }
+
+        public void RecibirDanio(int cantidad)
+        {
+            Vida -= cantidad;
+
+            if (Vida < 0)
+                Vida = 0;
+        }
+
+        public bool EstaVivo()
+        {
+            return Vida > 0;
         }
     }
 }

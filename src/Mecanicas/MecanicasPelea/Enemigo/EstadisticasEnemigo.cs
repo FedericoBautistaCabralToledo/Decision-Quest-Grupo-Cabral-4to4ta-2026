@@ -1,21 +1,48 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JuegoDecisionQuest.MecanicasPelea.Enemigo
+﻿namespace JuegoDecisionQuest.Objetos.MecanicasPelea.Enemigo
 {
     public class EstadisticasEnemigo
     {
-        int vida { get; set; }
-        int ataque { get; set; }
-        int defensa { get; set; }
-        public EstadisticasEnemigo(int vida, int ataque, int defensa)
+        public int Vida { get; private set; }
+        public int VidaMaxima { get; private set; }
+        public int Fase { get; private set; }
+
+        private int rondasFase;
+
+        public EstadisticasEnemigo()
         {
-            this.vida = vida;
-            this.ataque = ataque;
-            this.defensa = defensa;
+            Vida = 300;
+            VidaMaxima = 300;
+            Fase = 1;
+            rondasFase = 0;
+        }
+
+        public void RecibirDanio(int cantidad)
+        {
+            Vida -= cantidad;
+
+            if (Vida < 0)
+                Vida = 0;
+        }
+
+        public void CompletarRonda()
+        {
+            rondasFase++;
+
+            if (rondasFase >= 2 && Fase < 3)
+            {
+                Fase++;
+                rondasFase = 0;
+            }
+        }
+
+        public bool EstaVivo()
+        {
+            return Vida > 0;
+        }
+
+        public bool EstaDebilitado()
+        {
+            return Vida <= 30;
         }
     }
 }

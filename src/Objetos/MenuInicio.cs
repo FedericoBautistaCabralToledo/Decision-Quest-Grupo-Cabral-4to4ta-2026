@@ -8,22 +8,25 @@ namespace JuegoDecisionQuest
     {
         private Texture2D _menu;
         private Texture2D _botonInicio;
+        private Texture2D _botonLogros;
         private Texture2D _botonSalir;
 
         // Rectángulos públicos para dibujar y detectar clics del mouse
         public Rectangle RectanguloInicio { get; set; }
+        public Rectangle RectanguloLogros { get; set; }
         public Rectangle RectanguloSalir { get; set; }
 
         public MenuInicio(ContentManager content)
         {
             _menu = content.Load<Texture2D>("MenuTitulo");
             _botonInicio = content.Load<Texture2D>("BotonInicio");
+            _botonLogros = content.Load<Texture2D>("LogrosBoton");   // nuevo asset en Content
             _botonSalir = content.Load<Texture2D>("BotonSalida");
 
-            // Configura aquí las posiciones (X, Y) y tamaños (Ancho, Alto) reales de tus botones
-            // Ajusta estos números según cómo quieras que se vean en tu pantalla de 1000x750
+            // Tres botones de 300x100 con 20 px de separación, en una pantalla de 1000x750
             RectanguloInicio = new Rectangle(350, 300, 300, 100);
-            RectanguloSalir = new Rectangle(350, 450, 300, 100);
+            RectanguloLogros = new Rectangle(350, 420, 300, 100);
+            RectanguloSalir = new Rectangle(350, 540, 300, 100);
         }
 
         public void Dibujar(SpriteBatch spriteBatch)
@@ -32,10 +35,13 @@ namespace JuegoDecisionQuest
             Rectangle fondoDestino = new Rectangle(0, 0, 1000, 750);
             spriteBatch.Draw(_menu, fondoDestino, Color.White);
 
-            // 2. Dibujamos el botón de inicio. 
+            // 2. Botón de inicio
             spriteBatch.Draw(_botonInicio, RectanguloInicio, Color.White);
 
-            // 3. Dibujamos el botón de salir.
+            // 3. Botón de logros
+            spriteBatch.Draw(_botonLogros, RectanguloLogros, Color.White);
+
+            // 4. Botón de salir
             spriteBatch.Draw(_botonSalir, RectanguloSalir, Color.White);
         }
     }

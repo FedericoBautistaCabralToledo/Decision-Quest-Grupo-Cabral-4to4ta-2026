@@ -1,12 +1,37 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
-namespace JuegoDecisionQuest.MecanicasPelea.Jugador
+namespace JuegoDecisionQuest.Objetos.MecanicasPelea.Jugador
 {
-    internal class AtaqueJugador
+    public class AtaqueJugador
     {
+        private KeyboardState tecladoAnterior;
+        private MouseState ratonAnterior;
+
+        public Rectangle BotonAtacar { get; private set; }
+
+        public AtaqueJugador()
+        {
+            BotonAtacar = new Rectangle(400, 620, 200, 55);
+        }
+
+        public bool Actualizar(
+            KeyboardState teclado,
+            MouseState raton)
+        {
+            bool enter =
+                teclado.IsKeyDown(Keys.Enter) &&
+                tecladoAnterior.IsKeyUp(Keys.Enter);
+
+            bool click =
+                BotonAtacar.Contains(raton.Position) &&
+                raton.LeftButton == ButtonState.Pressed &&
+                ratonAnterior.LeftButton == ButtonState.Released;
+
+            tecladoAnterior = teclado;
+            ratonAnterior = raton;
+
+            return enter || click;
+        }
     }
 }
