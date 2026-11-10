@@ -315,11 +315,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ernes\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
+      "projectUniqueName": "C:\\Users\\ernes\\OneDrive\\Escritorio\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
       "projectName": "JuegoDecisionQuest",
-      "projectPath": "C:\\Users\\ernes\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
+      "projectPath": "C:\\Users\\ernes\\OneDrive\\Escritorio\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\JuegoDecisionQuest.csproj",
       "packagesPath": "C:\\Users\\ernes\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ernes\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\obj\\",
+      "outputPath": "C:\\Users\\ernes\\OneDrive\\Escritorio\\Decision-Quest-Grupo-Cabral-4to4ta-2026\\src\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ernes\\AppData\\Roaming\\NuGet\\NuGet.Config",

@@ -59,7 +59,7 @@ namespace JuegoDecisionQuest
 
         // Convierte la posición del mouse (pantalla real) a coordenadas de 1000x750
         public MouseState ConvertirMouse(MouseState mouse)
-        {
+        {   
             Rectangle area = AreaDestino;
 
             if (area.Width == 0 || area.Height == 0)
