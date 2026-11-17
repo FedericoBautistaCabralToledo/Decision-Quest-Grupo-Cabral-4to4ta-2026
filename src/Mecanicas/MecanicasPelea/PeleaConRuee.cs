@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
+﻿using JuegoDecisionQuest.Objetos.MecanicasPelea.Enemigo;
+using JuegoDecisionQuest.Objetos.MecanicasPelea.Jugador;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-
-using JuegoDecisionQuest.Objetos.MecanicasPelea.Jugador;
-using JuegoDecisionQuest.Objetos.MecanicasPelea.Enemigo;
 
 namespace JuegoDecisionQuest.Objetos.MecanicasPelea
 {
@@ -29,7 +28,8 @@ namespace JuegoDecisionQuest.Objetos.MecanicasPelea
 
         private readonly Texture2D pixel;
         private readonly Texture2D corazon;
-        private readonly Texture2D ruee;
+        private readonly Texture2D rueeFase2;
+        private readonly Texture2D rueeFase1;
         private readonly SpriteFont fuente;
 
         private readonly Rectangle arena =
@@ -68,6 +68,8 @@ namespace JuegoDecisionQuest.Objetos.MecanicasPelea
         public bool Terminado =>
             Victoria || Derrota || Perdonado;
 
+        public int Fase => enemigo.Fase;
+
         // Qué eligió el jugador al final (Ninguna si perdió antes de decidir)
         public Decision DecisionTomada { get; private set; } = Decision.Ninguna;
 
@@ -82,15 +84,17 @@ namespace JuegoDecisionQuest.Objetos.MecanicasPelea
             GraphicsDevice dispositivo,
             SpriteFont fuente,
             Texture2D corazon,
-            Texture2D ruee,
+            Texture2D rueeFase1,
             Texture2D calavera,
             Texture2D flecha,
             Texture2D monstruoRayo,
-            Texture2D rayo)
+            Texture2D rayo,
+            Texture2D rueeFase2)
         {
             this.fuente = fuente;
             this.corazon = corazon;
-            this.ruee = ruee;
+            this.rueeFase1 = rueeFase1;
+            this.rueeFase2 = rueeFase2;
 
             pixel = new Texture2D(dispositivo, 1, 1);
             pixel.SetData(new[] { Color.White });
@@ -284,10 +288,19 @@ namespace JuegoDecisionQuest.Objetos.MecanicasPelea
             DibujarInterfaz(sb);
         }
 
+        // Elige el sprite de Ruee según la fase en la que está
+        private Texture2D SpriteDeFase()
+        {
+            if (enemigo.Fase == 2)
+                return rueeFase2;
+
+            return rueeFase1;
+        }
+
         private void DibujarRuee(SpriteBatch sb)
         {
             sb.Draw(
-                ruee,
+                SpriteDeFase(),
                 new Rectangle(455, 45, 90, 110),
                 Color.White);
 

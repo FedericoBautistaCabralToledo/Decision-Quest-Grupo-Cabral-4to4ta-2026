@@ -62,6 +62,7 @@ namespace JuegoDecisionQuest
         // NPC RUEE
         NPC ruee;
         Texture2D texturaRuee;
+        Texture2D texturaRuee2;
 
         // OTROS DEMONIOS
         NPC demonio1;
@@ -93,14 +94,16 @@ namespace JuegoDecisionQuest
         float tiempoFinPelea;     // cuánto lleva mostrándose el resultado
         bool peleaResuelta;       // true si Ruee fue derrotada o perdonada (ya no se vuelve a pelear)
 
-        // GRAFO + DFS: estados de la pelea
-        GrafoFinales grafo;
-
         // Panel de desarrollo (F3): caminos del grafo e historial de decisiones
         bool mostrarDev = false;
         List<string> panelDev = new List<string>();
 
+        // MÚSICA
+        Song MusicaMenu;
         Song MusicaMapa;
+        Song MusicaFase1;     // pelea con Ruee, fase 1
+        Song MusicaFase2;     // pelea con Ruee, fase 2
+        Song musicaActual;    // la que está sonando ahora, para no reiniciarla
 
         Colisiones colisiones;
 
@@ -169,7 +172,8 @@ namespace JuegoDecisionQuest
             _mapa = new Mapa(Content);
 
             // CARGAR NPC RUEE
-            texturaRuee = Content.Load<Texture2D>("Ruee");
+            texturaRuee = Content.Load<Texture2D>("RueeFase1");
+            texturaRuee2 = Content.Load<Texture2D>("RueeFase2");
             ruee = new NPC(texturaRuee, new Vector2(720, 535), 80, 90);
 
             // CARGAR LOS OTROS DEMONIOS
@@ -210,9 +214,6 @@ namespace JuegoDecisionQuest
             foreach (NPC npc in npcs)
                 colisiones.Obstaculos.Add(npc.CajaColision);
 
-            // GRAFO de estados de la pelea (para el panel de desarrollo)
-            grafo = GrafoFinales.DePeleaConRuee();
-
             // Un píxel blanco para dibujar rectángulos de depuración
             pixel = new Texture2D(GraphicsDevice, 1, 1);
             pixel.SetData(new[] { Color.White });
@@ -227,10 +228,15 @@ namespace JuegoDecisionQuest
             _menu = new MenuInicio(Content);
             _logros = new MenuLogro(Content);
 
-            // Música del juego
+            // Música del juego (los nombres deben coincidir con los de Content.mgcb)
+            MusicaMenu = Content.Load<Song>("MusicaMenu");
             MusicaMapa = Content.Load<Song>("MusicaMapa");
+            MusicaFase1 = Content.Load<Song>("MusicaFase1");
+            MusicaFase2 = Content.Load<Song>("MusicaFase2");
             MediaPlayer.IsRepeating = true;
             MediaPlayer.Volume = 0.2f;
+
+            ReproducirMusica(MusicaMenu);   // el juego abre en el menú
         }
 
         protected override void Update(GameTime gameTime)
@@ -247,21 +253,13 @@ namespace JuegoDecisionQuest
 
             if (teclado.IsKeyDown(Keys.Escape))
             {
-               _estadoActual = EstadoJuego.Menu;
+                ReproducirMusica(MusicaMenu);
+                _estadoActual = EstadoJuego.Menu;
             }
 
             if (Presionada(teclado, Keys.F1))
             {
                 mostrarColisiones = !mostrarColisiones;
-            }
-
-            // F2: panel de desarrollo
-            if (Presionada(teclado, Keys.F3))
-            {
-                mostrarDev = !mostrarDev;
-
-                if (mostrarDev)
-                    ActualizarPanelDev();
             }
 
             // Lógica del menú que detecta el mouse
@@ -274,7 +272,7 @@ namespace JuegoDecisionQuest
                     if (_menu.RectanguloInicio.Contains(posicionRaton))
                     {
                         _estadoActual = EstadoJuego.Jugando;
-                        MediaPlayer.Play(MusicaMapa);
+                        ReproducirMusica(MusicaMapa);
                     }
                     else if (_menu.RectanguloLogros.Contains(posicionRaton))
                     {
@@ -346,6 +344,10 @@ namespace JuegoDecisionQuest
             {
                 pelea.Update(gameTime, raton);
 
+                // La música sigue la fase de Ruee: cambia sola cuando Ruee pasa de fase
+                if (!pelea.Terminado)
+                    ReproducirMusica(MusicaDeFase(pelea.Fase));
+
                 // Cuando termina, se deja ver el resultado 3 segundos y se vuelve al mapa
                 if (pelea.Terminado)
                 {
@@ -367,6 +369,26 @@ namespace JuegoDecisionQuest
         private bool Presionada(KeyboardState actual, Keys tecla)
         {
             return actual.IsKeyDown(tecla) && tecladoAnterior.IsKeyUp(tecla);
+        }
+
+        // Cambia de canción solo si es distinta a la que ya suena (así no se reinicia)
+        private void ReproducirMusica(Song cancion)
+        {
+            if (musicaActual == cancion)
+                return;
+
+            musicaActual = cancion;
+            MediaPlayer.Play(cancion);
+        }
+
+        // Qué canción corresponde a cada fase de la pelea con Ruee
+        private Song MusicaDeFase(int fase)
+        {
+            if (fase == 1)
+                return MusicaFase1;
+
+            else
+                return MusicaFase2;
         }
 
         // PILA de estados: guarda el estado actual y pasa a otro
@@ -411,16 +433,18 @@ namespace JuegoDecisionQuest
 
             // Se crea una pelea nueva cada vez, así la vida de ambos vuelve a empezar
             pelea = new PeleaConRuee(
-                GraphicsDevice,
-                fuentedialogo,
-                texturaCorazon,
-                texturaRuee,
-                texturaCalavera,
-                texturaFlecha,
-                texturaMonstruoRayo,
-                texturaRayo);
+                    GraphicsDevice,
+                    fuentedialogo,
+                    texturaCorazon,
+                    texturaRuee,         // rueeFase1
+                    texturaCalavera,
+                    texturaFlecha,
+                    texturaMonstruoRayo,
+                    texturaRayo,
+                    texturaRuee2);       // rueeFase2
 
             CambiarA(EstadoJuego.Pelea);
+            ReproducirMusica(MusicaDeFase(pelea.Fase));   // siempre empieza en la fase 1
         }
 
         // Aplica el resultado de la pelea en el mapa y vuelve a jugar
@@ -451,31 +475,10 @@ namespace JuegoDecisionQuest
                     ruee.Lineas.AddFirst(LineaRevancha);
             }
 
-            if (mostrarDev)
-                ActualizarPanelDev();
-
+            ReproducirMusica(MusicaMapa);
             Volver();
         }
 
-        // Arma el texto del panel de desarrollo (F2)
-        private void ActualizarPanelDev()
-        {
-            panelDev.Clear();
-
-            // GRAFO + DFS
-            panelDev.Add("CAMINOS A LOS FINALES:");
-            foreach (string camino in grafo.CaminosHastaFinales("Atacar"))
-                panelDev.Add("  " + camino);
-
-            // PILA (el foreach de una pila va de la más reciente a la más antigua)
-            panelDev.Add("HISTORIAL DE DECISIONES:");
-
-            if (historialDecisiones.Count == 0)
-                panelDev.Add("  (vacio)");
-
-            foreach (PeleaConRuee.Decision d in historialDecisiones)
-                panelDev.Add("  " + d);
-        }
 
         // ORDENAMIENTO POR SELECCIÓN de los objetos a dibujar, según la Y de sus pies
         private static void OrdenarPorSeleccion(List<KeyValuePair<float, Action>> lista)

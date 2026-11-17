@@ -13,7 +13,7 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin ../../../3D Objects/Juego/BotonVolverLogros.png
+#begin ../../../../../../3D Objects/Juego/Demonio1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -24,9 +24,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
-/build:../../../3D Objects/Juego/BotonVolverLogros.png;BotonVolverLogros.png
+/build:../../../../../../3D Objects/Juego/Demonio1.png;Demonio1.png
 
-#begin ../../../3D Objects/Juego/Demonio1.png
+#begin ../../../../../../3D Objects/Juego/Demonio2.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -37,9 +37,9 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
-/build:../../../3D Objects/Juego/Demonio1.png;Demonio1.png
+/build:../../../../../../3D Objects/Juego/Demonio2.png;Demonio2.png
 
-#begin ../../../3D Objects/Juego/Demonio2.png
+#begin ../../../../../../3D Objects/Juego/MenuLogros.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -50,7 +50,7 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
-/build:../../../3D Objects/Juego/Demonio2.png;Demonio2.png
+/build:../../../../../../3D Objects/Juego/MenuLogros.png;MenuLogros.png
 
 #begin BotonInicio.png
 /importer:TextureImporter
@@ -143,7 +143,7 @@
 /processorParam:Version=3.8.5.0
 /build:correrIzquierda.png
 
-#begin demonio3.png
+#begin Demonio1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -154,7 +154,20 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
-/build:demonio3.png;Demonio3.png
+/build:Demonio1.png
+
+#begin Demonio2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.0
+/build:Demonio2.png
 
 #begin flecha.png
 /importer:TextureImporter
@@ -320,12 +333,33 @@
 /processorParam:Version=3.8.5.0
 /build:monstruoRayo.png
 
+#begin MusicaFase1.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.0
+/build:MusicaFase1.mp3
+
+#begin MusicaFase2.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.0
+/build:MusicaFase2.mp3
+
 #begin MusicaMapa.mp3
 /importer:Mp3Importer
 /processor:SongProcessor
 /processorParam:Quality=Best
 /processorParam:Version=3.8.5.0
 /build:MusicaMapa.mp3
+
+#begin MusicaMenu.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/processorParam:Version=3.8.5.0
+/build:MusicaMenu.mp3
 
 #begin parado.png
 /importer:TextureImporter
@@ -353,7 +387,7 @@
 /processorParam:Version=3.8.5.0
 /build:Rayo.png
 
-#begin Ruee.png
+#begin RueeFase1.png
 /importer:TextureImporter
 /processor:TextureProcessor
 /processorParam:ColorKeyColor=255,0,255,255
@@ -364,7 +398,20 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /processorParam:Version=3.8.5.0
-/build:Ruee.png
+/build:RueeFase1.png
+
+#begin RueeFase2.png
+/importer:TextureImporter
+/processor:TextureProcessor
+/processorParam:ColorKeyColor=255,0,255,255
+/processorParam:ColorKeyEnabled=True
+/processorParam:GenerateMipmaps=False
+/processorParam:PremultiplyAlpha=True
+/processorParam:ResizeToPowerOfTwo=False
+/processorParam:MakeSquare=False
+/processorParam:TextureFormat=Color
+/processorParam:Version=3.8.5.0
+/build:RueeFase2.png
 
 #begin sobreposicion.png
 /importer:TextureImporter
